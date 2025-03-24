@@ -7,7 +7,7 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python manage.py runserver",
+        "command": "venv\\Scripts\\python manage.py runserver --noreload",
         "cwd": "apps/api"
       }
     },

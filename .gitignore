@@ -43,6 +43,17 @@ Thumbs.db
 
 # Next.js
 .next
+.env
 out
+
+# Django
+venv
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
 
 test-output
