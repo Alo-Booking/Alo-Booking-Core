@@ -2,7 +2,9 @@
   "name": "@alobooking/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "vercel-build": "nx build web"
+  },
   "private": true,
   "dependencies": {
     "next": "^15.2.3",
