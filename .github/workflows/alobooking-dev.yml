@@ -20,23 +20,27 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Next.js App (affected or full build)
-        run: npx nx build web
+      - name: Build affected apps
+        run: npx nx affected:build --base=origin/main --head=HEAD
 
-      # Aquí podrías agregar pasos de test o lint, si los necesitás.
-
-      - name: Deploy Next.js to Render
-        env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      - name: Identify affected apps
+        id: affected
         run: |
-          # Reemplazá YOUR_SERVICE_ID con el ID del servicio configurado en Render
-          curl -X POST "https://api.render.com/deploy/srv_YOUR_SERVICE_ID" \
-          -H "Authorization: Bearer $RENDER_API_KEY"
+          # Obtiene una lista de apps afectadas (una por línea)
+          affected_apps=$(npx nx show projects --affected --base=origin/main --head=HEAD --plain)
+          echo "affected_apps=${affected_apps}" >> $GITHUB_OUTPUT
+          echo "Affected apps: ${affected_apps}"
 
-      - name: Deploy Django Backend to Render
+      - name: Deploy Next.js (web) to Vercel
+        if: contains(steps.affected.outputs.affected_apps, 'web')
         env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN_DEV }}
         run: |
-          # Reemplazá YOUR_DJANGO_SERVICE_ID con el ID correspondiente en Render
-          curl -X POST "https://api.render.com/deploy/srv_YOUR_DJANGO_SERVICE_ID" \
-          -H "Authorization: Bearer $RENDER_API_KEY"
+          curl "$VERCEL_TOKEN"
+
+      - name: Deploy Django (api) to Render
+        if: contains(steps.affected.outputs.affected_apps, 'api')
+        env:
+          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_DEV }}
+        run: |
+          curl "$DEPLOY_URL"
