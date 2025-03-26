@@ -47,7 +47,7 @@ Thumbs.db
 out
 
 # Django
-venv
+venv/
 *.log
 *.pot
 *.pyc
