@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -26,8 +28,7 @@ jobs:
       - name: Identify affected apps
         id: affected
         run: |
-          # Obtiene una lista de apps afectadas (una por línea)
-          affected_apps=$(npx nx show projects --affected --base=origin/main --head=HEAD --plain)
+          affected_apps=$(npx nx affected:apps --base=origin/main --head=HEAD --plain)
           echo "affected_apps=${affected_apps}" >> $GITHUB_OUTPUT
           echo "Affected apps: ${affected_apps}"
 
