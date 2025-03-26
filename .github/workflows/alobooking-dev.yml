@@ -28,7 +28,7 @@ jobs:
       - name: Identify affected apps
         id: affected
         run: |
-          affected_apps=$(npx nx affected:apps --base=origin/main --head=HEAD --plain)
+          affected_apps=$(npx nx show projects --affected --base=HEAD~1 --head=HEAD --plain)
           echo "affected_apps=${affected_apps}" >> $GITHUB_OUTPUT
           echo "Affected apps: ${affected_apps}"
 
