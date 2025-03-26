@@ -22,20 +22,18 @@ jobs:
         run: npm install
 
       - name: Build affected apps
-        run: npx nx affected:build --base=origin/main --head=HEAD
+        run: npx nx affected:build --base=HEAD~1 --head=HEAD
 
       - name: Identify affected apps
         id: affected
         run: |
-          # Obtiene una lista de apps afectadas (una por línea)
-          affected_apps=$(npx nx show projects --affected --base=origin/main --head=HEAD --plain)
+          affected_apps=$(npx nx show projects --affected --base=HEAD~1 --head=HEAD --plain)
           echo "affected_apps=${affected_apps}" >> $GITHUB_OUTPUT
           echo "Affected apps: ${affected_apps}"
 
       - name: Deploy Next.js (web) to Vercel
         if: contains(steps.affected.outputs.affected_apps, 'web')
         run: |
-          # Asumiendo que la CLI de Vercel está configurada
           npx vercel --prod --confirm
 
       - name: Deploy Django (api) to Render
