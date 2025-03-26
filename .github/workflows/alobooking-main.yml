@@ -36,7 +36,7 @@ jobs:
       - name: Deploy Next.js (web) to Vercel
         if: contains(steps.affected.outputs.affected_apps, 'web')
         run: |
-          npx vercel --prod --confirm
+          echo "Deploying Next.js (web) to Vercel..."
 
       - name: Deploy Django (api) to Render
         if: contains(steps.affected.outputs.affected_apps, 'api')
