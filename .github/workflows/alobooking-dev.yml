@@ -1,0 +1,42 @@
+name: alobooking-dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Next.js App (affected or full build)
+        run: npx nx build web
+
+      # Aquí podrías agregar pasos de test o lint, si los necesitás.
+
+      - name: Deploy Next.js to Render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          # Reemplazá YOUR_SERVICE_ID con el ID del servicio configurado en Render
+          curl -X POST "https://api.render.com/deploy/srv_YOUR_SERVICE_ID" \
+          -H "Authorization: Bearer $RENDER_API_KEY"
+
+      - name: Deploy Django Backend to Render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          # Reemplazá YOUR_DJANGO_SERVICE_ID con el ID correspondiente en Render
+          curl -X POST "https://api.render.com/deploy/srv_YOUR_DJANGO_SERVICE_ID" \
+          -H "Authorization: Bearer $RENDER_API_KEY"

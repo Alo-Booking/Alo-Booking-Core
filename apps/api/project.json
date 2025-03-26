@@ -7,14 +7,21 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "venv\\Scripts\\python manage.py runserver --noreload",
+        "command": "venv\\Scripts\\python manage.py runserver",
         "cwd": "apps/api"
       }
     },
     "migrate": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "python manage.py migrate",
+        "command": "venv\\Scripts\\python manage.py migrate",
+        "cwd": "apps/api"
+      }
+    },
+    "make-migration": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "venv\\Scripts\\python manage.py makemigrations",
         "cwd": "apps/api"
       }
     }
