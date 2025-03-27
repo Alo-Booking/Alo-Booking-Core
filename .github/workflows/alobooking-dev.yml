@@ -22,26 +22,26 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build affected apps
-        run: npx nx affected:build --base=dev
+      - name: Build affected apps (Dev)
+        run: npx nx affected:build --base=origin/dev --head=HEAD
 
-      - name: Identify affected apps
+      - name: Identify affected apps (Dev)
         id: affected
         run: |
-          affected_apps=$(npx nx show projects --affected --base=dev)
+          affected_apps=$(npx nx show projects --affected --base=origin/dev --head=HEAD --plain | tr '\n' ' ')
           echo "affected_apps=${affected_apps}" >> $GITHUB_OUTPUT
           echo "Affected apps: ${affected_apps}"
 
-      - name: Deploy Next.js (web) to Vercel
+      - name: Deploy Next.js (web) to Vercel (Dev)
         if: contains(steps.affected.outputs.affected_apps, 'web')
         env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN_DEV }}
+          VERCEL_DEV_DEPLOY_HOOK: ${{ secrets.VERCEL_TOKEN_DEV }}
         run: |
-          curl "$VERCEL_TOKEN"
+          curl -X POST "$VERCEL_DEV_DEPLOY_HOOK"
 
-      - name: Deploy Django (api) to Render
+      - name: Deploy Django (api) to Render (Dev)
         if: contains(steps.affected.outputs.affected_apps, 'api')
         env:
-          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_DEV }}
+          RENDER_DEV_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_DEV }}
         run: |
-          curl "$DEPLOY_URL"
+          curl -X POST "$RENDER_DEV_DEPLOY_HOOK_URL"
