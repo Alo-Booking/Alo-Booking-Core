@@ -25,20 +25,11 @@ jobs:
       - name: Build affected apps
         run: npx nx affected:build --base=HEAD~1 --head=HEAD
 
-      - name: Identify affected apps
-        id: affected
-        run: |
-          affected_apps=$(npx nx show projects --affected --base=HEAD~1 --head=HEAD --plain)
-          echo "affected_apps=${affected_apps}" >> $GITHUB_OUTPUT
-          echo "Affected apps: ${affected_apps}"
-
       - name: Deploy Next.js (web) to Vercel
-        if: contains(steps.affected.outputs.affected_apps, 'web')
         run: |
           echo "Deploying Next.js (web) to Vercel..."
 
       - name: Deploy Django (api) to Render
-        if: contains(steps.affected.outputs.affected_apps, 'api')
         env:
           DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_PROD }}
         run: |
