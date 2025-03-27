@@ -25,11 +25,9 @@ jobs:
       - name: Build affected apps (Dev)
         run: npx nx affected:build --base=HEAD~1 --head=HEAD
 
-      - name: Deploy Next.js (web) to Vercel (Dev)
-        env:
-          VERCEL_DEV_DEPLOY_HOOK: ${{ secrets.VERCEL_TOKEN_DEV }}
+      - name: Deploy Next.js (web) to Vercel
         run: |
-          curl -X POST "$VERCEL_DEV_DEPLOY_HOOK"
+          echo "Deploying Next.js (web) to Vercel..."
 
       - name: Deploy Django (api) to Render (Dev)
         env:
