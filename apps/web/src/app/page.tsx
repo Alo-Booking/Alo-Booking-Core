@@ -298,7 +298,7 @@ export default function Index() {
                 </svg>
                 <h2>
                   Nx Cloud
-                  <span>Enable faster CI & better DX</span>
+                  <span>Enable DEV la ultima lo prometo</span>
                 </h2>
               </div>
               <p>
