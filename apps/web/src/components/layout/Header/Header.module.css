@@ -1,0 +1,10 @@
+
+.header-nav__item {
+  @apply bg-none text-white;
+}
+
+.header-nav__button {
+  @apply border rounded-full px-2 py-1 flex items-center min-h-9 hover:bg-[#f5f5f5] hover:text-black transition-all duration-300 ease-in-out;
+}
+
+

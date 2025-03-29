@@ -22,26 +22,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build affected apps
+      - name: Build affected apps (Dev)
         run: npx nx affected:build --base=HEAD~1 --head=HEAD
 
-      - name: Identify affected apps
-        id: affected
-        run: |
-          affected_apps=$(npx nx show projects --affected --base=HEAD~1 --head=HEAD --plain)
-          echo "affected_apps=${affected_apps}" >> $GITHUB_OUTPUT
-          echo "Affected apps: ${affected_apps}"
-
       - name: Deploy Next.js (web) to Vercel
-        if: contains(steps.affected.outputs.affected_apps, 'web')
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN_DEV }}
         run: |
-          curl "$VERCEL_TOKEN"
+          echo "Deploying Next.js (web) to Vercel..."
 
-      - name: Deploy Django (api) to Render
-        if: contains(steps.affected.outputs.affected_apps, 'api')
+      - name: Deploy Django (api) to Render (Dev)
         env:
-          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_DEV }}
+          RENDER_DEV_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_DEV }}
         run: |
-          curl "$DEPLOY_URL"
+          curl -X POST "$RENDER_DEV_DEPLOY_HOOK_URL"
