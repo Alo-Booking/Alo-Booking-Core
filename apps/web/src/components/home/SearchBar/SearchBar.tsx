@@ -6,11 +6,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { LuMapPin, LuCalendarDays, LuUserRound } from 'react-icons/lu'
 
 export function SearchBar() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SearchFormData>({
+  const { register, handleSubmit } = useForm<SearchFormData>({
     resolver: zodResolver(searchSchema),
   })
 
