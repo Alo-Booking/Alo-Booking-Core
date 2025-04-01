@@ -1,10 +1,27 @@
+'use client'
+
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Header.module.css'
 
 export const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className='fixed top-0 left-0 w-full flex items-center justify-between px-12 py-6 bg-transparent z-10'>
+    <header
+      className={`fixed top-0 left-0 w-full flex items-center justify-between px-12 py-6 z-10 transition-colors duration-300 ${
+        isScrolled ? 'bg-[#0E1B83]' : 'bg-transparent'
+      }`}
+    >
       <div className='flex items-center'>
         <Image
           src='/images/header_logo_default.webp'
@@ -18,11 +35,11 @@ export const Header = () => {
           <li className={styles['header-nav__item']}>
             <button className={`min-w-[80px] ${styles['header-nav__button']}`}>
               <Image
-                src='/images/home_hero_flag_button.webp'
+                src='/images/eng_flag_button.webp'
                 alt='Logo'
                 width={25}
                 height={25}
-                className={'rounded-full'}
+                className={'rounded-full w-auto h-auto'}
               />
               <span className='ml-2'>ENG</span>
             </button>
