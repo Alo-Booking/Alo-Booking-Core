@@ -1,11 +1,11 @@
 'use client'
 
-import { SearchFormData, searchSchema } from '@/models/search.model'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { LuMapPin, LuCalendarDays, LuUserRound } from 'react-icons/lu'
+import { SearchFormData, searchSchema } from '../../models'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { LuCalendarDays, LuMapPin, LuUserRound } from 'react-icons/lu'
 
-export function SearchBar() {
+export const HeroSearchBar = () => {
   const { register, handleSubmit } = useForm<SearchFormData>({
     resolver: zodResolver(searchSchema),
   })
@@ -54,5 +54,3 @@ export function SearchBar() {
     </form>
   )
 }
-
-export default SearchBar

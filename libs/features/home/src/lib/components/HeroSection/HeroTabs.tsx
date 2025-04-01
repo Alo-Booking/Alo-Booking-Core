@@ -1,12 +1,11 @@
 'use client'
 
-import { SEARCH_TABS } from '@/constants/const'
-import { SearchTabLabel } from '@/models/tab.model'
 import { useState } from 'react'
+import { SEARCH_TABS } from '../../constants/const'
+import { SearchTabLabel } from '../../models'
 
-export function Tabs() {
+export const HeroTabs = () => {
   const [selectedTab, setSelectedTab] = useState(SearchTabLabel.STAYS)
-
   return (
     <ul className='flex gap-2 list-none'>
       {SEARCH_TABS.map((tab) => {
@@ -29,5 +28,3 @@ export function Tabs() {
     </ul>
   )
 }
-
-export default Tabs

@@ -14,10 +14,11 @@ module.exports = {
   content: [
     './{src,pages,components,app}/**/*.{ts,tsx,js,jsx,html}',
     '!./{src,pages,components,app}/**/*.{stories,spec}.{ts,tsx,js,jsx,html}',
+    '../../libs/**/*.{js,ts,jsx,tsx}',
     //     ...createGlobPatternsForDependencies(__dirname)
   ],
   theme: {
     extend: {},
   },
   plugins: [],
-};
+}

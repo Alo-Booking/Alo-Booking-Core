@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react'
 
-import SearchBar from './SearchBar'
+import Title from './Title'
 
-describe('SearchBar', () => {
+describe('Title', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SearchBar />)
+    const { baseElement } = render(<Title />)
     expect(baseElement).toBeTruthy()
   })
 })
