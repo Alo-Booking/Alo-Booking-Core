@@ -1,12 +1,10 @@
+import { TitleSection } from '@alobooking/ui'
 import { PopularCarousel } from './PopularCarousel'
 
 export function PopularSection() {
   return (
-    <section className=' mx-auto py-20 px-20'>
-      <h2 className='text-5xl font-normal mb-6'>
-        Discover the most <span className='font-bold'>popular</span>
-      </h2>
-
+    <section className='mx-auto my-20 px-20'>
+      <TitleSection normalText='Discover the most' highlightText='popular' />
       <PopularCarousel />
     </section>
   )

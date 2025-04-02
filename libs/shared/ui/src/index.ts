@@ -1,1 +1,1 @@
-export * from './lib/components/Title/Title'
+export * from './lib/components/TitleSection/TitleSection'

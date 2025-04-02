@@ -12,7 +12,7 @@ import { CarouselItem } from '../../models/carousel'
 import { useState } from 'react'
 
 export const PopularCarousel = () => {
-  const [places, setPlaces] = useState<CarouselItem[]>([
+  const [places] = useState<CarouselItem[]>([
     {
       id: 1,
       title: 'Treasure Beach, Jamaica',

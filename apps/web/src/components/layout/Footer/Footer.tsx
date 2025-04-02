@@ -7,9 +7,10 @@ export function Footer() {
         <div className='flex flex-col items-start gap-2 justify-center'>
           <Image
             src='/images/footer_logo_default.webp'
-            alt='AloBooking Logo'
+            alt='Alo Booking Logo'
             width={100}
             height={100}
+            className='w-auto h-auto'
           />
         </div>
 
@@ -39,7 +40,7 @@ export function Footer() {
               className={`w-[80px] border rounded-full px-2 py-1 flex items-center min-h-9 hover:bg-[#f5f5f5] hover:text-black transition-all duration-300 ease-in-out`}
             >
               <Image
-                src='/images/home_hero_flag_button.webp'
+                src='/images/eng_flag_button.webp'
                 alt='Logo'
                 width={25}
                 height={25}
@@ -55,7 +56,7 @@ export function Footer() {
       </div>
 
       <div className='border-t border-white/20'>
-        <p className='text-center py-4'>Alobooking - All rights reserved</p>
+        <p className='text-center py-4'>Alo Booking - All rights reserved</p>
       </div>
     </footer>
   )
