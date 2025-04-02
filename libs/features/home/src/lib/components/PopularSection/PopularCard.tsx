@@ -7,16 +7,16 @@ interface Props {
 
 export const PopularCard = ({ place }: Props) => {
   return (
-    <div className=''>
+    <div>
       <div className='relative w-auto h-48 object-cover'>
         <Image
           src={place.image}
           alt={place.title}
           width={300}
           height={200}
-          className='w-full h-full object-cover rounded-xl'
+          className='w-full h-full object-cover rounded-3xl'
         />
-        <span className='absolute top-2 left-2 bg-black/50 text-white px-2 py-1 rounded-full text-sm'>
+        <span className='absolute top-3 left-3 bg-black text-white px-4 py-2 rounded-full text-xs font-semibold uppercase'>
           {place.type}
         </span>
       </div>

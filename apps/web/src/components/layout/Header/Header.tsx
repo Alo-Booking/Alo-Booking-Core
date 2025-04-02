@@ -18,7 +18,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full flex items-center justify-between px-12 py-6 z-10 transition-colors duration-300 ${
+      className={`fixed top-0 left-0 w-full flex items-center justify-between px-12 py-4 z-50 transition-colors duration-300 ${
         isScrolled ? 'bg-[#0E1B83]' : 'bg-transparent'
       }`}
     >
@@ -26,8 +26,9 @@ export const Header = () => {
         <Image
           src='/images/header_logo_default.webp'
           alt='Logo'
-          width={150}
+          width={120}
           height={100}
+          className={`w-auto h-auto`}
         />
       </div>
       <nav>
