@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { LuArrowRight } from 'react-icons/lu'
-import { ExperienceItem } from '../../models/experience-card'
+import { ExperienceItem } from '../../models'
 
 interface Props {
   item: ExperienceItem

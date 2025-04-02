@@ -8,8 +8,8 @@ import {
   LuWifi,
 } from 'react-icons/lu'
 import { PopularCard } from './PopularCard'
-import { CarouselItem } from '../../models/carousel'
 import { useState } from 'react'
+import { CarouselItem } from '../../models'
 
 export const PopularCarousel = () => {
   const [places] = useState<CarouselItem[]>([
