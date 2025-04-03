@@ -1,5 +1,5 @@
+import { TabModules } from '@alobooking/ui'
 import { HeroSearchBar } from './HeroSearchBar'
-import { HeroTabs } from './HeroTabs'
 
 export function HeroSection() {
   return (
@@ -8,7 +8,7 @@ export function HeroSection() {
         {'Discover new experiences & create new stories.'}
       </h1>
       <div className='mt-16 text-lg font-semibold'>
-        <HeroTabs />
+        <TabModules />
         <HeroSearchBar />
       </div>
     </section>
