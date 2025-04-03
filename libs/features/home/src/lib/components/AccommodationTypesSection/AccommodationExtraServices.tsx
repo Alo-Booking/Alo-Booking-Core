@@ -57,7 +57,7 @@ export const AccommodationExtraServices = () => {
             >
               <Icon className='text-4xl' />
               <h3 className='text-center text-sm'>
-                Desayuno incluido
+                {service.text}
               </h3>
             </div>
           )
