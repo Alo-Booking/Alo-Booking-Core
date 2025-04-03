@@ -1,5 +1,3 @@
-'use client'
-
 import {
   LuArrowLeft,
   LuArrowRight,
@@ -7,16 +5,16 @@ import {
   LuChefHat,
   LuWifi,
 } from 'react-icons/lu'
-import { PopularCard } from './PopularCard'
+import { PopularCard } from '../PopularSection/PopularCard'
 import { CarouselItem } from '../../models'
 
-export const PopularCarousel = () => {
+export const NewWayCarousel = () => {
   const places: CarouselItem[] = [
     {
       id: 1,
-      title: 'Treasure Beach, Jamaica',
-      price: '$198 / night',
-      image: '/images/home/popular_carousel_hotel_1.webp',
+      title: 'Miami Airport Marriott',
+      price: '$2,753 / night',
+      image: '/images/home/newway_carousel_hotel_1.webp',
       type: 'Hotel',
       accommodations: [
         {
@@ -31,10 +29,10 @@ export const PopularCarousel = () => {
     },
     {
       id: 2,
-      title: 'Guatapé, Medellín, Colombia',
-      price: '$66 / night',
-      image: '/images/home/popular_carousel_hotel_2.webp',
-      type: 'Cabin',
+      title: 'Radisson RED Miami Airport',
+      price: '$1,863 / night',
+      image: '/images/home/newway_carousel_hotel_2.webp',
+      type: 'Hotel',
       accommodations: [
         {
           label: 'Transportation included',
@@ -48,9 +46,9 @@ export const PopularCarousel = () => {
     },
     {
       id: 3,
-      title: 'Noord, Aruba',
-      price: '$198 / night',
-      image: '/images/home/popular_carousel_hotel_3.webp',
+      title: 'Palmer Dadeland',
+      price: '$758 / night',
+      image: '/images/home/newway_carousel_hotel_3.webp',
       type: 'Hotel',
       accommodations: [
         {
@@ -65,9 +63,9 @@ export const PopularCarousel = () => {
     },
     {
       id: 4,
-      title: 'Necoclí, Colombia',
-      price: '$30 / night',
-      image: '/images/home/popular_carousel_hotel_4.webp',
+      title: 'Marriott Miami West',
+      price: '$1,563 / night',
+      image: '/images/home/newway_carousel_hotel_4.webp',
       type: 'Hotel',
       accommodations: [
         {

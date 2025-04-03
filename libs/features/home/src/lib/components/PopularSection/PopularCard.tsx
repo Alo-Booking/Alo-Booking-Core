@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { CarouselItem } from '../../models/carousel'
+import { CarouselItem } from '../../models'
 
 interface Props {
   place: CarouselItem
@@ -22,18 +22,24 @@ export const PopularCard = ({ place }: Props) => {
       </div>
 
       <div className='py-2'>
-        <h3 className='font-semibold text-lg line-clamp-1'>{place.title}</h3>
-        <p className='text-gray-600 text-sm mb-2'>{place.price}</p>
+        <h3 className='font-semibold text-lg line-clamp-1'>
+          {place.title}
+        </h3>
+        <p className='text-gray-600 text-sm mb-2'>
+          {place.price}
+        </p>
 
         <ul className='flex flex-wrap gap-2 text-xs text-gray-500'>
-          {place.accommodations.map((inc, i) => {
-            const Icon = typeof inc === 'string' ? null : inc.icon
-            const label = typeof inc === 'string' ? inc : inc.label
+          {place.accommodations.map((accom, i) => {
+            const Icon = accom.icon
 
             return (
-              <li key={i} className='flex items-center gap-1'>
-                {Icon && <Icon size={16} />}
-                {label}
+              <li
+                key={i}
+                className='flex items-center gap-1'
+              >
+                <Icon size={16} />
+                {accom.label}
               </li>
             )
           })}

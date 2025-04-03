@@ -2,6 +2,8 @@ import {
   ExperiencesSection,
   HeroSection,
   PopularSection,
+  AccommodationTypesSection,
+  NewWaySection,
 } from '@alobooking/home'
 
 export default function Index() {
@@ -10,6 +12,8 @@ export default function Index() {
       <HeroSection />
       <PopularSection />
       <ExperiencesSection />
+      <AccommodationTypesSection />
+      <NewWaySection />
     </main>
   )
 }
