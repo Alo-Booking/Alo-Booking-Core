@@ -6,6 +6,20 @@ on:
       - dev
 
 jobs:
+  trigger-other-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v2
+
+      - name: Trigger workflow in other repo
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.DEV_PAT }} # Asegúrate de tener un token con permisos para ambos repos
+          repository: OscarLTC/Alo-Booking # Reemplázalo por el owner y repo correspondientes
+          event-type: merge-trigger
+          client-payload: '{"target_branch": "dev"}'
+
   deploy:
     runs-on: ubuntu-latest
     steps:
