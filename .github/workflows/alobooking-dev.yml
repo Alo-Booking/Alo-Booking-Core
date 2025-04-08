@@ -15,8 +15,8 @@ jobs:
       - name: Trigger workflow in other repo
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ secrets.DEV_PAT }} # Asegúrate de tener un token con permisos para ambos repos
-          repository: OscarLTC/Alo-Booking # Reemplázalo por el owner y repo correspondientes
+          token: ${{ secrets.DEV_PAT }}
+          repository: Alo-Booking/Alo-Booking-Core
           event-type: merge-trigger
           client-payload: '{"target_branch": "dev"}'
 
