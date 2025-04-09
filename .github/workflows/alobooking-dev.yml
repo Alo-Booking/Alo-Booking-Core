@@ -17,7 +17,7 @@ jobs:
         with:
           token: ${{ secrets.DEV_PAT }}
           repository: OscarLTC/Alo-Booking
-          event-type: merge-trigger
+          event-type: merge-trigger-dev
           client-payload: '{"target_branch": "dev"}'
 
   deploy:

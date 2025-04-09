@@ -6,6 +6,20 @@ on:
       - main
 
 jobs:
+  trigger-other-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repo
+        uses: actions/checkout@v2
+
+      - name: Trigger workflow in other repo
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.DEV_PAT }}
+          repository: OscarLTC/Alo-Booking
+          event-type: merge-trigger-main
+          client-payload: '{"target_branch": "main"}'
+
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -13,21 +27,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build affected apps
-        run: npx nx affected:build --base=HEAD~1 --head=HEAD
-
-      - name: Deploy Next.js (web) to Vercel
-        run: |
-          echo "Deploying Next.js (web) to Vercel..."
 
       - name: Deploy Django (api) to Render
         env:
