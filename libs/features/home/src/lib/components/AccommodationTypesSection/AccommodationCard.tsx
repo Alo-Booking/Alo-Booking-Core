@@ -10,7 +10,7 @@ export const AccommodationCard = ({ item }: Props) => {
     <div className='w-auto h-48 object-cover'>
       <Image
         src={item.image}
-        alt='Hotels'
+        alt={item.name}
         className='w-full h-full object-cover rounded-t-3xl '
         width={300}
         height={200}
