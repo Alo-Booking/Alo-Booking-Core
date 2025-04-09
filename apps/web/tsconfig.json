@@ -30,7 +30,6 @@
       "node"
     ],
     "outDir": "dist",
-    "rootDir": "src",
     "tsBuildInfoFile": "dist/tsconfig.tsbuildinfo"
   },
   "include": [
@@ -42,7 +41,7 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "../../libs/features/home/src/lib/models/search.model.ts", "../../libs/features/home/src/lib/models/tab.model.ts"  ],
   "exclude": [
     "out-tsc",
     "dist",

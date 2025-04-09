@@ -1,6 +1,6 @@
-import { SearchTab, SearchTabLabel } from '@/models/tab.model'
 import { LuConciergeBell, LuPlane, LuCarFront } from 'react-icons/lu'
 import { TbBeach } from 'react-icons/tb'
+import { SearchTab, SearchTabLabel } from '../models'
 
 export const SEARCH_TABS: SearchTab[] = [
   {
