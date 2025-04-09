@@ -30,6 +30,6 @@ jobs:
 
       - name: Deploy Django (api) to Render
         env:
-          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_PROD }}
+          RENDER_DEV_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL_PROD }}
         run: |
-          curl "$DEPLOY_URL"
+          curl -X POST "$RENDER_DEV_DEPLOY_HOOK_URL"
